@@ -8,14 +8,19 @@
   ChatController.$inject = ["$http"];
 
   function ChatController($http) {
-    var token = window.slackToken;
-    var channel = "C0LJ6NG5S";
-    var text = "Interpolated";
-    var url = `https://slack.com/api/chat.postMessage?token=${token}&channel=${channel}&text=${text}`;
+    this.message = {};
 
-    $http({
-      method: "POST",
-      url: url
-    })
+    this.postMessage = function postMessage() {
+      console.log("running chat");
+      var token = window.slackToken;
+      var channel = this.message.channel;
+      var text = this.message.text;
+      var url = `https://slack.com/api/chat.postMessage?token=${token}&channel=${channel}&text=${text}`;
+
+      $http({
+        method: "POST",
+        url: url
+      });
+    }
   }
 })();

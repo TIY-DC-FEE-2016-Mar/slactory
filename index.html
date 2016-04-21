@@ -25,9 +25,9 @@
 
     <form ng-controller="ChatController as chat">
       <h1>Chat</h1>
-      <input type="text" class="form-control">
-      <textarea class="form-control"></textarea>
-      <button class="btn btn-default">Send</button>
+      <input ng-model="chat.message.channel" type="text" class="form-control">
+      <textarea ng-model="chat.message.text" class="form-control"></textarea>
+      <button class="btn btn-default" ng-click="chat.postMessage()">Send</button>
     </form>
   </body>
 </html>
