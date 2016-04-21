@@ -10,21 +10,21 @@
   function ChannelsController($http) {
     var token = window.slackToken; // TODO: get from a factory / localStorage
 
+    this.list = [];
+
+    var that = this;
+
     $http({
       method: "POST",
       url: "https://slack.com/api/channels.list?token=" + token
-    }).then(onSuccess, onFailure);
-
-    this.list = [
-      { name: "Ours", id: "C0LJ6NG5S" }
-    ]
+    }).then(function onSuccess(response) {
+      response.data.channels.forEach(function(chan) {
+        that.list.push(chan);
+      })
+    }, onFailure);
   }
 
   // Helper functions
-
-  function onSuccess(response) {
-    console.log('success', response);
-  }
 
   function onFailure(response) {
     console.log('failure', response);
