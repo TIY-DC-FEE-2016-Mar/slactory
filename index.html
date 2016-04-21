@@ -6,9 +6,19 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/controllers/channels.js"></script>
     <style type="text/css">
     </style>
   </head>
   <body>
+    <section ng-controller="ChannelsController as cc">
+      <h1>Channels</h1>
+      <ul>
+        <li ng-repeat="channel in cc.list">
+          {{channel.name}}
+          <code>{{channel.id}}</code>
+        </li>
+      </ul>
+    </section>
   </body>
 </html>
